@@ -5,10 +5,10 @@ import useCurrencyInfo from './hooks/useCurrencyInfo'
 
 function App() {
 
-  const [amount, setAmount] = useState()
+  const [amount, setAmount] = useState(0)
   const [from, setFrom] = useState("usd")
   const [to, setTo] = useState("inr")
-  const [convertedAmount, setConvertedAmount] = useState()
+  const [convertedAmount, setConvertedAmount] = useState(0)
 
   const currencyInfo = useCurrencyInfo(from)
 
@@ -27,18 +27,18 @@ function App() {
 
   return (
     <div
-      className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
-      style={{
-        backgroundImage: `url('https://images.pexels.com/photos/3532540/pexels-photo-3532540.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
-      }}
+      className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat md:bg-indigo-300 bg-yellow-500"
+    // style={{
+    //   backgroundImage: `url('https://images.pexels.com/photos/3532540/pexels-photo-3532540.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
+    // }}
     >
+      <h1 className='md:text-4xl font-bold text-3xl md:text-red-400 text-gray-600'>Currency Convertor</h1>
       <div className="w-full">
         <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30">
           <form
             onSubmit={(e) => {
               e.preventDefault();
               convert()
-
             }}
           >
             <div className="w-full mb-1">
@@ -46,7 +46,7 @@ function App() {
                 label="From"
                 amount={amount}
                 currencyOptions={options}
-                onCurrencyChange={(currency) => setFrom(currency)} 
+                onCurrencyChange={(currency) => setFrom(currency)}
                 selectCurrency={from}
                 onAmountChange={(amount) => setAmount(amount)}
               />
@@ -65,7 +65,7 @@ function App() {
                 label="To"
                 amount={convertedAmount}
                 currencyOptions={options}
-                onCurrencyChange={(currency) => setTo(currency)}
+                onCurrencyChange={(currency) => setTo(currency)} 
                 selectCurrency={to}
                 amountDisable
               />
